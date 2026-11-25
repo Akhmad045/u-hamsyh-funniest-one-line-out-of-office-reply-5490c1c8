@@ -16,6 +16,8 @@ def main() -> None:
     line = LINE.strip()
     if not line or len(line) > 160:
         raise ValueError("entry must be 1-160 characters")
+    if "\n" in line or "\r" in line:
+        raise ValueError("entry must be a single line")
     if line != line.strip():
         raise ValueError("entry must not start or end with whitespace")
     out_path = "/output/entry.txt"
